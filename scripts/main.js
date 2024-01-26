@@ -1,36 +1,37 @@
 const myHeading = document.querySelector("h1");
-myHeading.textContent = "Hello world!";
+myHeading.textContent = "Harry LaCast";
 
 const myImage = document.querySelector("img");
 
 myImage.onclick = () => {
   const mySrc = myImage.getAttribute("src");
-  if (mySrc === "images/firefox-icon.png") {
-    myImage.setAttribute("src", "images/firefox2.png");
+  if (mySrc === "images/mycat.jpg") {
+    myImage.setAttribute("src", "images/2 cat.jpg");
   } else {
-    myImage.setAttribute("src", "images/firefox-icon.png");
+    myImage.setAttribute("src", "images/mycat.jpg");
   }
 };
 
 let myButton = document.querySelector("button");
 
-function setUserName() {
+// This function changes the title of the page to a greeting.
+function titleGreeting() {
     const myName = prompt("Please enter your name.");
     if (!myName) {
-      setUserName();
+      titleGreeting();
     } else {
       localStorage.setItem("name", myName);
-      myHeading.textContent = `Look at this long cat, ${myName}`;
+      myHeading.textContent = `Nice to meet you, ${myName}! My name is Harry.`;
     }
   }
 
 if (!localStorage.getItem("name")) {
-  setUserName();
+  titleGreeting();
 } else {
   const storedName = localStorage.getItem("name");
-  myHeading.textContent = `Look at this long cat, ${storedName}`;
+  myHeading.textContent = `Nice to meet you, ${storedName}! My name is Harry.`;
 }
 
 myButton.onclick = () => {
-    setUserName();
+    titleGreeting();
   };
